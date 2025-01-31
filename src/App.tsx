@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
+import Cryp from "../assets/cryptonic.png"
+import PDF from "../assets/pdf_chatbot.png"
+import SN from "../assets/sn.png"
 import { 
   Github, 
   Linkedin, 
@@ -227,7 +229,7 @@ function App() {
                 >
                   <div className="relative group">
                     <img
-                      src={`../assets/pdf_chatbot.png`}
+                      src={PDF}
                       alt={`Project1`}
                       className="w-full h-48 object-cover"
                     />
@@ -275,8 +277,8 @@ function App() {
                 >
                   <div className="relative group">
                     <img
-                      src={`../assets/cryptonic.png`}
-                      alt={`Project1`}
+                      src={Cryp}
+                      alt={`Project2`}
                       className="w-full h-48 object-fit"
                     />
                     <motion.div 
@@ -324,8 +326,8 @@ function App() {
                 >
                   <div className="relative group">
                     <img
-                      src={`../assets/sn.png`}
-                      alt={`Project1`}
+                      src={SN}
+                      alt={`Project3`}
                       className="w-full h-48 object-cover"
                     />
                     <motion.div 
