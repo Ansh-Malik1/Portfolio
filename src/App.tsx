@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+
 import { 
   Github, 
   Linkedin, 
   Mail, 
   ExternalLink, 
   Code, 
-  Send, 
   Download,
   Moon,
   Sun,
@@ -19,9 +19,6 @@ import {
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const [nameRef, nameInView] = useInView({ triggerOnce: true });
   const [aboutRef, aboutInView] = useInView({ triggerOnce: true });
@@ -38,29 +35,32 @@ function App() {
     { name: 'Frontend Development', icon: <Layout />, progress: 90 },
     { name: 'Backend Development', icon: <Server />, progress: 85 },
     { name: 'Database Management', icon: <Database />, progress: 80 },
-    { name: 'DevOps', icon: <Terminal />, progress: 75 },
+    { name: 'Generative AI', icon: <Server />, progress: 85 },
+    { name: 'C++', icon: <Terminal />, progress: 75 },
+    { name: 'Python', icon: <Terminal />, progress: 85 },
+    { name: 'Operating Systems', icon: <Layout />, progress: 85 },
+    { name: 'GoLang', icon: <Terminal />, progress: 65 }
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
     
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }
-  };
+  //   try {
+  //     // Simulate API call
+  //     await new Promise(resolve => setTimeout(resolve, 1500));
+  //     setSubmitStatus('success');
+  //     setFormData({ name: '', email: '', message: '' });
+  //   } catch (error) {
+  //     setSubmitStatus('error');
+  //   } finally {
+  //     setIsSubmitting(false);
+  //     setTimeout(() => setSubmitStatus('idle'), 3000);
+  //   }
+  // };
 
   const handleDownloadCV = () => {
-    // Replace with actual CV download logic
-    window.open('https://example.com/cv.pdf', '_blank');
+    window.open('https://drive.google.com/file/d/1brkGEZqpvvarnop2BtnyoTgaAScinTtZ/view?usp=sharing', '_blank');
   };
 
   return (
@@ -101,12 +101,12 @@ function App() {
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              John Doe
+              Ansh Malik
             </motion.h1>
-            <p className="text-2xl text-gray-300 mb-8">Full Stack Developer</p>
+            <p className="text-2xl text-gray-300 mb-8">AI/ML Engineer | Full Stack Developer</p>
             <div className="flex justify-center space-x-6 mb-8">
               <motion.a 
-                href="https://github.com" 
+                href="https://github.com/Ansh-Malik1" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 360 }}
@@ -115,7 +115,7 @@ function App() {
                 <Github size={24} />
               </motion.a>
               <motion.a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/ansh-malik-b476b0261/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 360 }}
@@ -124,7 +124,7 @@ function App() {
                 <Linkedin size={24} />
               </motion.a>
               <motion.a 
-                href="mailto:john@example.com"
+                href="mailto:anshmalik0304@gmail.com"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 className={`${isDarkMode ? 'hover:text-blue-400' : 'hover:text-blue-600'} transition-colors`}
               >
@@ -140,7 +140,7 @@ function App() {
               whileTap={{ scale: 0.95 }}
             >
               <Download size={20} />
-              Download CV
+              Check Updated CV
             </motion.button>
           </motion.div>
         </div>
@@ -159,9 +159,9 @@ function App() {
             <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
             <div className="max-w-3xl mx-auto">
               <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
-                I'm a passionate full-stack developer with expertise in modern web technologies.
-                With 5+ years of experience building scalable applications, I love turning complex
-                problems into simple, beautiful solutions.
+                I am a student currently pursuing my B.TECH in AIML from Mahraja Agrasen Institute of Technology. 
+                I have keen interest in learning new things. I am good at MERN Devlopment and Next.js. Along with these,
+                I have knowledge of Machine Learning Models as well as Generative AI. I am good at Python, Javascript, TypeScritpt, Tensorflow, Keras, LLms.
               </p>
             </div>
           </motion.div>
@@ -220,17 +220,15 @@ function App() {
           >
             <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((project) => (
-                <motion.div
-                  key={project}
+            <motion.div
                   className={`rounded-lg overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}
                   whileHover={{ y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="relative group">
                     <img
-                      src={`https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80`}
-                      alt={`Project ${project}`}
+                      src={`../assets/pdf_chatbot.png`}
+                      alt={`Project1`}
                       className="w-full h-48 object-cover"
                     />
                     <motion.div 
@@ -246,13 +244,13 @@ function App() {
                     </motion.div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">Project {project}</h3>
+                    <h3 className="text-xl font-bold mb-2">PDF Chatbot using LLMs</h3>
                     <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>
-                      A brief description of the project and its key features.
+                    A chatbot where user can upload a PDF and ask questions based on the uploaded pdf.
                     </p>
                     <div className="flex justify-between items-center">
                       <motion.a 
-                        href="#" 
+                        href="https://github.com/Ansh-Malik1/PDF-Chatbot" 
                         className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
                         whileHover={{ x: 5 }}
                       >
@@ -260,7 +258,7 @@ function App() {
                         View Code
                       </motion.a>
                       <motion.a 
-                        href="#" 
+                        href="https://pdf-qnachatbot-anshmalik.streamlit.app/" 
                         className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
                         whileHover={{ x: 5 }}
                       >
@@ -269,108 +267,105 @@ function App() {
                       </motion.a>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className={`py-20 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
-        <div className="container mx-auto px-4">
-          <motion.div
-            ref={contactRef}
-            initial="hidden"
-            animate={contactInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold mb-12 text-center">Get In Touch</h2>
-            <div className="max-w-lg mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      isDarkMode 
-                        ? 'bg-gray-800 border-gray-700 text-white' 
-                        : 'bg-gray-50 border-gray-300 text-gray-900'
-                    }`}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      isDarkMode 
-                        ? 'bg-gray-800 border-gray-700 text-white' 
-                        : 'bg-gray-50 border-gray-300 text-gray-900'
-                    }`}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>Message</label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      isDarkMode 
-                        ? 'bg-gray-800 border-gray-700 text-white' 
-                        : 'bg-gray-50 border-gray-300 text-gray-900'
-                    }`}
-                    required
-                  />
-                </div>
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 ${
-                    isDarkMode ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'
-                  } text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed`}
+            </motion.div>
+            <motion.div
+                  className={`rounded-lg overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {isSubmitting ? (
-                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <Send size={20} />
-                      Send Message
-                    </>
-                  )}
-                </motion.button>
-                <AnimatePresence>
-                  {submitStatus !== 'idle' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      className={`text-center p-3 rounded-lg ${
-                        submitStatus === 'success' 
-                          ? 'bg-green-500 text-white' 
-                          : 'bg-red-500 text-white'
-                      }`}
+                  <div className="relative group">
+                    <img
+                      src={`../assets/cryptonic.png`}
+                      alt={`Project1`}
+                      className="w-full h-48 object-fit"
+                    />
+                    <motion.div 
+                      className="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300"
+                      whileHover={{ opacity: 1 }}
                     >
-                      {submitStatus === 'success' 
-                        ? 'Message sent successfully!' 
-                        : 'Failed to send message. Please try again.'}
+                      <motion.button
+                        className="px-4 py-2 bg-white text-blue-500 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        View Details
+                      </motion.button>
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </form>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">Cryptonic, An NFT Marketplace</h3>
+                    <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>
+                    A full-stack NFT Marketplace using Solidity, Next.js, and Ethers.js for decentralized trading of non-
+                    fungible tokens (NFTs), ensuring security and privacy by using Interplanetary File System (IPFS) and blockchain.
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <motion.a 
+                        href="https://github.com/Ansh-Malik1/Cryptonic" 
+                        className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
+                        whileHover={{ x: 5 }}
+                      >
+                        <Code size={20} />
+                        Code
+                      </motion.a>
+                      <motion.a 
+                        href="https://www.loom.com/share/11753055a0484ab0b9171f0a37584a61?sid=2351ba65-d4eb-4390-9fb8-249e60b3d222" 
+                        className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
+                        whileHover={{ x: 5 }}
+                      >
+                        <ExternalLink size={20} />
+                        Live Demo
+                      </motion.a>
+                    </div>
+                  </div>
+            </motion.div>
+            <motion.div
+                  className={`rounded-lg overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative group">
+                    <img
+                      src={`../assets/sn.png`}
+                      alt={`Project1`}
+                      className="w-full h-48 object-cover"
+                    />
+                    <motion.div 
+                      className="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300"
+                      whileHover={{ opacity: 1 }}
+                    >
+                      <motion.button
+                        className="px-4 py-2 bg-white text-blue-500 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        View Details
+                      </motion.button>
+                    </motion.div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">StudyNotion, An Ed-Tech Platform</h3>
+                    <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>
+                    A comprehensive educational platform for online learning using MongoDB, Express.js, React.js,
+                    and Node.js. It is a fullstack website with user authentication and Razorpay integration as well.
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <motion.a 
+                        href="https://github.com/Ansh-Malik1/StudyNotion" 
+                        className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
+                        whileHover={{ x: 5 }}
+                      >
+                        <Code size={20} />
+                        Code
+                      </motion.a>
+                      <motion.a 
+                        href="https://study-n.vercel.app/" 
+                        className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'} flex items-center gap-2`}
+                        whileHover={{ x: 5 }}
+                      >
+                        <ExternalLink size={20} />
+                        Live Demo
+                      </motion.a>
+                    </div>
+                  </div>
+            </motion.div>
             </div>
           </motion.div>
         </div>
@@ -378,7 +373,7 @@ function App() {
 
       {/* Footer */}
       <footer className={`py-8 ${isDarkMode ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-600'} text-center`}>
-        <p>&copy; {new Date().getFullYear()} John Doe. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Ansh Malik. All rights reserved.</p>
       </footer>
     </div>
   );
